@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
   public playerDATA: any = {}
   public character: any = {}
 
-  public url_host: string = 'http://localhost:3000';
+  public url_host: string = 'https://back-rpg.onrender.com';
   constructor( private auth: AuthService,private http: HttpClient,private router: Router) {}
 
  ngOnInit() {
