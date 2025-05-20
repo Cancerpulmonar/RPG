@@ -1,0 +1,36 @@
+
+<ion-content [fullscreen]="true">
+  <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Selecciona tu clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let role of roles">
+        <ion-card button (click)="seleccionarClase(role)">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon [name]="role.icon"></ion-icon> {{ role.name }}
+            </ion-card-title>
+            <ion-card-subtitle>{{ role.description }}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p><strong>HP:</strong> {{ role.hp }}</p>
+            <p><strong>PC:</strong> {{ role.pc }}</p>
+            <p><strong>Fuerza:</strong> {{ role.strength }}</p>
+            <p><strong>Defensa:</strong> {{ role.defense }}</p>
+            <p><strong>Daño Mágico:</strong> {{ role.magicDMG }}</p>
+            <p><strong>Daño Físico:</strong> {{ role.physicalDMG }}</p>
+            <p><strong>Crítico:</strong> {{ role.crit_chance }}% / x{{ role.crit_DMG }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

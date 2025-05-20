@@ -1,0 +1,109 @@
+ion-content {
+  --background: #f9f9f9;
+  padding: 16px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chat-box, .user-list {
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  overflow: hidden;
+}
+
+ion-card-header {
+  background-color: #4a90e2;
+  text-align: center;
+
+  ion-card-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 12px 0;
+  }
+}
+
+.join-container, .input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+
+  ion-item {
+    --background: white;
+    --highlight-background: transparent;
+    --min-height: 40px;
+    border-radius: 8px;
+    padding: 4px 8px;
+
+    ion-input {
+      color: #333;
+    }
+  }
+
+  ion-button {
+    --background: #4a90e2;
+    --color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+}
+
+.messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 12px;
+
+  ion-list {
+    padding: 0;
+
+    ion-item {
+      --background: #f0f0f0;
+      border-radius: 8px;
+      margin: 6px 0;
+      color: #333;
+
+      &.my-message {
+        --background: #d9eaff;
+      }
+
+      ion-label {
+        white-space: pre-wrap;
+
+        .content {
+          font-size: 14px;
+          margin-top: 4px;
+          color: #444;
+        }
+      }
+    }
+  }
+}
+
+.typing-indicator {
+  font-style: italic;
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.user-list {
+  ion-card-title {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 12px 0;
+  }
+
+  ion-item {
+    --background: transparent;
+    font-size: 14px;
+    color: #555;
+  }
+}

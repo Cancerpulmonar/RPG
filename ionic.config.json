@@ -1,0 +1,7 @@
+{
+  "name": "chatot",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
