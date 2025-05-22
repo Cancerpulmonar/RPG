@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonIcon,IonInput } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonIcon,IonInput,IonItem,IonLabel } from '@ionic/angular/standalone';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ interface Role {
   templateUrl: './createplayer.page.html',
   styleUrls: ['./createplayer.page.scss'],
   standalone: true,
-  imports: [CommonModule,
+  imports: [CommonModule,FormsModule,
 
     IonHeader,
     IonToolbar,
@@ -44,7 +44,9 @@ interface Role {
     IonCardSubtitle,
     IonCardContent,
     IonIcon,
-  IonInput]
+  IonInput,
+IonItem,
+IonLabel],
 })
 
 
