@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {  IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -29,8 +29,8 @@ interface Role {
   templateUrl: './createplayer.page.html',
   styleUrls: ['./createplayer.page.scss'],
   standalone: true,
-  imports: [  CommonModule,
-    
+  imports: [CommonModule,
+
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -49,11 +49,11 @@ interface Role {
 
 export class CreateplayerPage implements OnInit {
 
-  constructor(private auth: AuthService,private http: HttpClient,private router: Router) { }
-public playerDATA: any = []
-public url_host: string = 'https://back-rpg.onrender.com';
-  
- public roles: Role[] = [
+  constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
+  public playerDATA: any = []
+  public url_host: string = 'https://back-rpg.onrender.com';
+
+  public roles: Role[] = [
     {
       id: this.playerDATA.email,
       name: 'Druida',
@@ -175,18 +175,17 @@ public url_host: string = 'https://back-rpg.onrender.com';
     }
   ];
 
-  
+
 
   ngOnInit() {
-     this.auth.user$.subscribe((data) => {
-    this.playerDATA = data;
-      }) 
-    }
+    this.auth.user$.subscribe((data) => {
+      this.playerDATA = data;
+    })
+  }
 
 
-  seleccionarClase(role:any){
-    console.log(role)
-    let nuevos_datos = {
+  seleccionarClase(role: Role) {
+    const playerData = {
       id: this.playerDATA.email,
       name: role.name,
       description: role.description,
@@ -202,19 +201,25 @@ public url_host: string = 'https://back-rpg.onrender.com';
       experience: role.experience,
       level: role.level,
       icon: role.icon
-      
     };
 
-    //Molaria hacer rollo un apartado de confirmacion antes de guardar los datos
-
-    console.log(nuevos_datos)
-
-
-    //confirmacion ok
-    //enviar base de datos player con id = email
-    //this.http.post(this.url_host,)
-
-
+    this.http.post(`${this.url_host}/players`, playerData).subscribe({
+      next: (response) => {
+        console.log('Personaje creado:', response);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        console.error('Error al crear personaje:', err);
+        alert('Error al crear el personaje');
+      }
+    });
 
   }
+
+
+
+
+
+
+  
 }
