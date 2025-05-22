@@ -203,7 +203,7 @@ export class CreateplayerPage implements OnInit {
       icon: role.icon
     };
 
-    this.http.post(`${this.url_host}/createplayer`, playerData).subscribe({
+    this.http.post(`${this.url_host}/crearpersonaje`, playerData).subscribe({
       next: (response) => {
         console.log('Personaje creado:', response);
         this.router.navigate(['/home']);
