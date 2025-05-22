@@ -52,7 +52,7 @@ export class CreateplayerPage implements OnInit {
   constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
   public playerDATA: any = []
   public url_host: string = 'https://back-rpg.onrender.com';
-
+  public nombrePersonaje:string = '';
   public roles: Role[] = [
     {
       id: this.playerDATA.email,
@@ -187,7 +187,7 @@ export class CreateplayerPage implements OnInit {
   seleccionarClase(role: Role) {
     const datosnuevos = {
       id: this.playerDATA.email,
-      name: role.name,
+      name: this.nombrePersonaje,
       description: role.description,
       hp: role.hp,
       pc: role.pc,
@@ -202,6 +202,7 @@ export class CreateplayerPage implements OnInit {
       level: role.level,
       icon: role.icon
     };
+    console.log(datosnuevos)
 
     this.http.post(`${this.url_host}/crearpersonaje`, datosnuevos).subscribe({
       next: (response) => {
