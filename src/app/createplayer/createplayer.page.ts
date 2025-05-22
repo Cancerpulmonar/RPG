@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {  IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
-
+import { AuthService } from '@auth0/auth0-angular';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 interface Role {
@@ -47,10 +49,13 @@ interface Role {
 
 export class CreateplayerPage implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService,private http: HttpClient,private router: Router) { }
+public playerDATA: any = []
+public url_host: string = 'https://back-rpg.onrender.com';
+  
  public roles: Role[] = [
     {
-      id: 'druida',
+      id: this.playerDATA.email,
       name: 'Druida',
       description: 'Maestro de la naturaleza y sanación.',
       hp: 80,
@@ -67,7 +72,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'leaf-outline'
     },
     {
-      id: 'mago',
+      id: this.playerDATA.email,
       name: 'Mago',
       description: 'Especialista en ataques mágicos poderosos.',
       hp: 70,
@@ -84,7 +89,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'flame-outline'
     },
     {
-      id: 'picaro',
+      id: this.playerDATA.email,
       name: 'Pícaro',
       description: 'Ágil y sigiloso, experto en ataques críticos.',
       hp: 75,
@@ -101,7 +106,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'eye-outline'
     },
     {
-      id: 'sacerdote',
+      id: this.playerDATA.email,
       name: 'Sacerdote',
       description: 'Sanador y protector del grupo.',
       hp: 85,
@@ -118,7 +123,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'medkit-outline'
     },
     {
-      id: 'guerrero',
+      id: this.playerDATA.email,
       name: 'Guerrero',
       description: 'Fuerte en combate cuerpo a cuerpo, con gran defensa.',
       hp: 120,
@@ -135,7 +140,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'shield-checkmark-outline'
     },
     {
-      id: 'cazador',
+      id: this.playerDATA.email,
       name: 'Cazador',
       description: 'Experto en ataques a distancia y trampas.',
       hp: 85,
@@ -152,7 +157,7 @@ export class CreateplayerPage implements OnInit {
       icon: 'bow-arrow-outline'
     },
     {
-      id: 'paladin',
+      id: this.playerDATA.email,
       name: 'Paladín',
       description: 'Guerrero sagrado, combina fuerza y magia defensiva.',
       hp: 110,
@@ -170,11 +175,46 @@ export class CreateplayerPage implements OnInit {
     }
   ];
 
+  
+
   ngOnInit() {
-  }
+     this.auth.user$.subscribe((data) => {
+    this.playerDATA = data;
+      }) 
+    }
 
 
   seleccionarClase(role:any){
+    console.log(role)
+    let nuevos_datos = {
+      id: this.playerDATA.email,
+      name: role.name,
+      description: role.description,
+      hp: role.hp,
+      pc: role.pc,
+      strength: role.strength,
+      defense: role.defense,
+      magicDMG: role.magicDMG,
+      physicalDMG: role.physicalDMG,
+      crit_chance: role.crit_chance,
+      crit_DMG: role.crit_DMG,
+      gold: role.gold,
+      experience: role.experience,
+      level: role.level,
+      icon: role.icon
+      
+    };
+
+    //Molaria hacer rollo un apartado de confirmacion antes de guardar los datos
+
+    console.log(nuevos_datos)
+
+
+    //confirmacion ok
+    //enviar base de datos player con id = email
+    //this.http.post(this.url_host,)
+
+
 
   }
 }
