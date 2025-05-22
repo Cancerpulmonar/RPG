@@ -1,19 +1,25 @@
-/* Estilo general del fondo con temática RPG */
 ion-content {
-  --background: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center / cover;
+  position: relative; /* necesario para posicionar el overlay */
+  --background: url('/src/assets/ChatGPT_Image_22_may_2025_18_39_18.png') no-repeat center center / cover;
+  overflow: hidden;
 }
 
-/* Efecto de overlay oscuro para mejorar legibilidad */
+/* Overlay oscuro */
 ion-content::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: -1;
+  z-index: 0; /* debe quedar detrás del contenido */
+  pointer-events: none; /* para que no interfiera */
 }
+
+/* Todo el contenido dentro de ion-content debe estar por encima */
+ion-content > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* Estilo para la barra de título */
 ion-toolbar {
@@ -123,4 +129,27 @@ ion-card.selected {
   box-shadow: 0 0 15px gold, 
               0 0 25px rgba(210, 105, 30, 0.6) inset;
   transform: scale(1.02);
+}
+
+ion-input {
+  --background: rgba(30, 30, 30, 0.85);
+  --color: #f8d7a4;
+  --placeholder-color: #d1b38d;
+  border: 2px solid #6e2c0e;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(210, 105, 30, 0.5) inset;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+ion-input:focus {
+  border-color: #d2691e;
+  box-shadow: 0 0 12px #d2691e inset;
+  outline: none;
 }
