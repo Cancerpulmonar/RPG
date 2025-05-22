@@ -1,9 +1,7 @@
+/* Estilo general del fondo con temática RPG */
 ion-content {
-  position: relative; /* necesario para posicionar el overlay */
-  --background: url('/src/assets/ChatGPT_Image_22_may_2025_18_39_18.png') no-repeat center center / cover;
-  overflow: hidden;
+  --background: url('/assets/ChatGPT_Image_22_may_2025_18_39_18.png') no-repeat center center / cover;
 }
-
 /* Overlay oscuro */
 ion-content::before {
   content: '';
