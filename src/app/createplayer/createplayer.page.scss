@@ -1,0 +1,126 @@
+/* Estilo general del fondo con temática RPG */
+ion-content {
+  --background: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center / cover;
+}
+
+/* Efecto de overlay oscuro para mejorar legibilidad */
+ion-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+/* Estilo para la barra de título */
+ion-toolbar {
+  --background: linear-gradient(to right, #3a1c0e, #6e2c0e, #3a1c0e);
+  --color: #f8d7a4;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  text-shadow: 1px 1px 2px #000;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+/* Estilo base para las cartas de personaje */
+ion-card {
+  --background: rgba(30, 30, 30, 0.85);
+  border: 2px solid #6e2c0e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 
+              0 0 15px rgba(210, 105, 30, 0.4) inset;
+  margin: 16px;
+  transition: all 0.3s ease;
+  color: #f8d7a4;
+  font-family: 'MedievalSharp', cursive;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Efecto hover para las cartas */
+ion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8), 
+              0 0 20px rgba(210, 105, 30, 0.6) inset;
+  border-color: #d2691e;
+}
+
+/* Estilo para el encabezado de la carta */
+ion-card-header {
+  background: linear-gradient(to right, #3a1c0e, #6e2c0e);
+  padding: 16px;
+  border-bottom: 1px solid #d2691e;
+}
+
+ion-card-title {
+  color: #f8d7a4;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ion-card-subtitle {
+  color: #d1b38d;
+  font-size: 0.9rem;
+}
+
+/* Estilo para el contenido de la carta */
+ion-card-content {
+  padding: 16px;
+  background: rgba(20, 20, 20, 0.5);
+}
+
+ion-card-content p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+ion-card-content strong {
+  color: #d2691e;
+  margin-right: 5px;
+}
+
+/* Efecto de borde decorativo */
+ion-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #d2691e, transparent);
+}
+
+/* Estilo para los íconos de clase */
+ion-icon {
+  font-size: 1.8rem;
+  color: #f8d7a4;
+}
+
+/* Estilo responsivo para grid */
+ion-grid {
+  padding: 10px;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+}
+
+/* Efecto de selección */
+ion-card.selected {
+  border: 2px solid gold;
+  box-shadow: 0 0 15px gold, 
+              0 0 25px rgba(210, 105, 30, 0.6) inset;
+  transform: scale(1.02);
+}
