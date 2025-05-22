@@ -185,7 +185,7 @@ export class CreateplayerPage implements OnInit {
 
 
   seleccionarClase(role: Role) {
-    const playerData = {
+    const datosnuevos = {
       id: this.playerDATA.email,
       name: role.name,
       description: role.description,
@@ -203,7 +203,7 @@ export class CreateplayerPage implements OnInit {
       icon: role.icon
     };
 
-    this.http.post(`${this.url_host}/crearpersonaje`, playerData).subscribe({
+    this.http.post(`${this.url_host}/crearpersonaje`, datosnuevos).subscribe({
       next: (response) => {
         console.log('Personaje creado:', response);
         this.router.navigate(['/home']);
